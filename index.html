@@ -3,25 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Riders Football Club - Home</title>
-    <link rel="stylesheet" href="main_styles.css">
+    <title>Innovatech Solutions - Home</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
         body {
             margin: 0;
-            overflow: hidden;
-            position: relative;
-            height: 100vh;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+            background-color: #f0f0f0;
+            color: #444;
         }
 
-        video {
+        header {
             position: fixed;
             top: 0;
-            left: 0;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: -1;
+            width: 100%;
+            background-color: #333;
+            padding: 10px 0;
+            z-index: 2;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
         }
 
         .menu {
@@ -43,7 +48,7 @@
         .submenu {
             display: none;
             position: absolute;
-            background-color: none;
+            background-color: #333;
             padding: 5px;
             top: 100%;
             left: 0;
@@ -57,88 +62,143 @@
 
         /* Logo styles */
         .logo-container {
-            position: absolute;
+            position: fixed;
             top: 10px;
-            left: 10px;
-            width: 100px;
-            height: 100px;
-            border: 2px solid white;
+            right: 10px;
+            width: 120px;
+            height: 120px;
+            z-index: 3; /* Ensure logo is on top */
+        }
+
+        .ring {
+            width: 120px;
+            height: 120px;
+            border: 2px solid #fff;
             border-radius: 50%;
-            overflow: hidden;
-            z-index: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: rotateRing 5s infinite linear;
+        }
+
+        @keyframes rotateRing {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .logo {
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }    
+            border-radius: 50%;
+            animation: rotateLogo 3s infinite linear;
+        }
+
+        @keyframes rotateLogo {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        } 
 
         .info-container {
-            position: right;
+            position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: white;
+            color: #fff;
             text-align: center;
             font-size: 16px;
-            width: 60%;
-            background-color: rgba(0, 0, 0, 0.5);
+            width: 80%;
+            max-width: 400px;
+            background-color: rgba(51, 51, 51, 0.8);
             padding: 20px;
             border-radius: 10px;
             z-index: 1;
             display: none;
         }
-h2 {
-    position: fixed;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
-    text-align: center;
-    font-size: 18px;
-}
 
+        h2 {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            text-align: center;
+            font-size: 18px;
+            z-index: 2;
+        }
+
+        /* Responsive CSS */
+        @media only screen and (max-width: 768px) {
+            .info-container {
+                width: 90%;
+                max-width: 300px;
+                font-size: 14px;
+            }
+        }
+
+        /* Video styles */
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            overflow: hidden;
+        }
     </style>
 </head>
+<body>
+    <header>
         <nav>
             <ul class="menu">
                 <li><a href="#">Home</a></li>
                 <li>
-                    <a href="#">View More</a>
+                    <a href="#">Services</a>
                     <ul class="submenu">
-                        <li><a href="news.html">NEWS</a></li>
-                        <li><a href="teams.html">TEAMS</a></li>
-                        <li><a href="directors.html">DIRECTORS</a></li>
-                        <li><a href="shop.html">SHOP</a></li>
-                        <li><a href="tickets_membership.html">TICKETS AND FANS ZONE</a></li>
+                        <li><a href="news.html">Updates</a></li>
+                        <li><a href="directors.html">Directors</a></li>
+                        <li><a href="teams.html">Teams</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="video.html">Videos</a></li>
                     </ul>
                 </li>
             </ul>
         </nav>
-    <h2>RIDERS FC RC: 7279702</h2>
+        <h2>Innovatech Solutions - Empowering Your Business</h2>
     </header>
-<body>
+
     <!-- Logo -->
     <div class="logo-container">
-        <img class="logo" src="logo.png" alt="Logo">
+        <div class="ring"></div>
+        <img class="logo" src="logo.jpg" alt="Logo">
     </div>
     <video autoplay muted loop>
         <source src="video.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
-
     <!-- Random information container -->
     <div class="info-container" id="randomInfo"></div>
     <script>
         const infoContainer = document.getElementById('randomInfo');
         const infoData = [
-            "WELCOME TO RIDERS FOOTBALL CLUB.",
-            "WELCOME TO RIDERS FOOTBALL CLUB. Mission Statement: Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "WELCOME TO RIDERS FOOTBALL CLUB. Vision Statement: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            "WELCOME TO RIDERS FOOTBALL CLUB. Chairman Remarks: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            "WELCOME TO RIDERS FOOTBALL CLUB. Address: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+            "Welcome to Innovatech Solutions.",
+            "We specialize in cutting-edge web design and development.",
+            "Our app development team creates seamless experiences for mobile and web platforms.",
+            "Transform your business with our cloud solutions tailored to your needs.",
+            "Get expert consulting services to drive innovation and growth.",
+            "Contact us today to start your digital transformation journey!"
         ];
 
         let currentIndex = 0;
