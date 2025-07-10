@@ -19,15 +19,25 @@
       background-color: #000;
     }
 
-    video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      min-width: 100%;
-      min-height: 100%;
-      object-fit: cover;
-      z-index: -1;
-    }
+video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center center;
+  z-index: -1;
+}
+
+/* Adjust on smaller screens to prevent zoom/cropping of video action */
+@media (max-width: 768px) {
+  video {
+    object-fit: contain;
+    background: black;
+  }
+}
+
 
     header {
       position: fixed;
